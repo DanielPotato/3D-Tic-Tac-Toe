@@ -20,3 +20,40 @@ class Board:
         print("##########")
 
 
+
+    def Prompt_move(self):
+        '''
+        this function returns tow variables 
+        first variable will be layer number 
+        second variable will be square numbe (we return square-1 )
+        '''
+
+        valid = False
+        while valid == False:
+            layer = input("Choose layer number 1-3: ")
+            if layer.isdigit() and 1 <= int(layer) <= 3:
+                valid = True
+            else:
+                print("Invalid input")
+        valid = False
+        while valid == False:
+            square = input("Choose Square number 1-9: ")
+            if square.isdigit() and 1 <= int(square) <= 9:
+                valid = True
+            else:
+                print("Invalid input")
+
+        return int(layer) , (int(square)-1) 
+
+board = Board()
+layer , square = board.Prompt_move()
+print(layer,square)
+
+##TODO: todo: check 
+
+
+
+
+board.display()
+
+

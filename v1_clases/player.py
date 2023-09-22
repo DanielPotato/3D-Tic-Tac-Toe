@@ -9,8 +9,8 @@ class Player:
         self._name = x
 
 
-    def Prompt_move(self):
-        
+    
+       
 
 # player1=Player()
 # player1.set_name("player1") 
