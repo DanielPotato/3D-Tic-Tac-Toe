@@ -49,7 +49,8 @@ board = Board()
 layer , square = board.Prompt_move()
 print(layer,square)
 
-##TODO: todo: check 
+##TODO: create a new function that checks for a win condition , and a function that checks move cordinates is empty 
+
 
 
 
