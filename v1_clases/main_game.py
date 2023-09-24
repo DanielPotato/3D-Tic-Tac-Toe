@@ -22,20 +22,12 @@ board3=Board()
 board1.display()
 board2.display()
 board3.display()
+boards=[board1,board2,board3]
 
-
-layer=player1.select_layer()
-square = player1.select_square()
-cells_list=[board1.cells,board2.cells,board3.cells]
-
-cells_list[layer][square]="O"
-
-os.system("clear")
-
-
-
+board1.cells[0]="O"
+s=board1.is_empty_cell(1)
+print(s)
 board1.display()
 
-board2.display()
 
-board3.display()
+for board in boards: board.display()
