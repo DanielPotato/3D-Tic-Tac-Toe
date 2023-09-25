@@ -27,7 +27,7 @@ class Board:
                 and self.squares[l][0][2] != " "
             ):
                 return self.squares[l][0][2]
-
+####################################################################
         for r in range(self.row):
             for c in range(self.col):
                 if (
@@ -36,21 +36,24 @@ class Board:
                 ):
                     return self.squares[0][r][c]
 
+        #v
         if (
             self.squares[0][0][0] == self.squares[1][1][1] == self.squares[2][2][2]
             and self.squares[0][0][0] != " "
         ):
             return self.squares[0][0][0]
+        
+        
         if (
             self.squares[0][0][2] == self.squares[1][1][1] == self.squares[2][2][0]
             and self.squares[0][0][2] != " "
         ):
             return self.squares[0][0][2]
 
-        # for l in range(self.layer):
-        #     for r in range(self.row):
-        #         for c in range(self.col):
-        #             if self.squares[l][r][c] == " ":
-        #                 return " "
+        for l in range(self.layer):
+            for r in range(self.row):
+                for c in range(self.col):
+                    if self.squares[l][r][c] == " ":
+                        return " "
 
-        # return "C"
+        return "C"

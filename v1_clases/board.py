@@ -18,7 +18,7 @@ class Board :
 
 
     def displayBoard(self):
-        os.system("clear")
+        #os.system("clear")
         for l in range(self.layer):
             print(f"Layer :{l+1}")
             for r in range(self.row):
@@ -50,7 +50,7 @@ class Board :
                 print("_"*8)   
 
     def displayRow(self,layer,row):
-        os.system("clear")
+        #os.system("clear")
         print("1 2 3")
         layer -=1
         row -=1
@@ -71,21 +71,85 @@ class Board :
         if self.is_valid_indices(layer, row, col):
             return self.squares[layer-1][row-1][col-1] == " "
         else:
-            print("Please provide valid Input!")
+            #print("Please provide valid Input!")
             return False
 
-board = Board()
 
-board.displayBoard()
-result = board.is_square_empty(1, 1, 1)
+    def check_win(self):
+        for l in range(self.layer):
+        # Check if any row in this layer has the same symbol in all cells
 
-print(result)
-board.set_squares(1,1,1,"X")
-board.set_squares(1,1,2,"X")
-board.set_squares(1,1,3,"X")
-board.displayBoard()
-board.displayLayer(1)
+            for r in range(self.row):
+                if (
+                    self.squares[l][r][0] == self.squares[l][r][1] == self.squares[l][r][2]
+                    and self.squares[l][r][0] != " "
+                ):
+                    return self.squares[l][r][0]
+        # Check if any column in this layer has the same symbol in all cells
 
-result = board.is_square_empty(1, 1, 1)
-board.displayRow(1, 1)
-print(result)
+            for c in range(self.col):
+                if (
+                    self.squares[l][0][c] == self.squares[l][1][c] == self.squares[l][2][c]
+                    and self.squares[l][0][c] != " "
+                ):
+                    return self.squares[l][0][c]
+            #  Check diagonals in this layer
+            if (
+                self.squares[l][0][0] == self.squares[l][1][1] == self.squares[l][2][2]
+                and self.squares[l][0][0] != " "
+            ):
+                return self.squares[l][0][0]
+            if (
+                self.squares[l][0][2] == self.squares[l][1][1] == self.squares[l][2][0]
+                and self.squares[l][0][2] != " "
+            ):
+                return self.squares[l][0][2]
+####################################################################
+    # Check rows and columns across layers
+        for r in range(self.row):
+            for c in range(self.col):
+                if (
+                    self.squares[0][r][c] == self.squares[1][r][c] == self.squares[2][r][c]
+                    and self.squares[0][r][c] != " "
+                ):
+                    return self.squares[0][r][c]
+    #  Check diagonals across layers
+        if (
+            self.squares[0][0][0] == self.squares[1][1][1] == self.squares[2][2][2]
+            and self.squares[0][0][0] != " "
+        ):
+            return self.squares[0][0][0]
+        if (
+            self.squares[0][0][2] == self.squares[1][1][1] == self.squares[2][2][0]
+            and self.squares[0][0][2] != " "
+        ):
+            return self.squares[0][0][2]
+    # If no winner yet and there are empty cells, the game is ongoing
+        for l in range(self.layer):
+            for r in range(self.row):
+                for c in range(self.col):
+                    if self.squares[l][r][c] == " ":
+                        return " "
+
+        return "C"
+
+
+# board = Board()
+
+# board.displayBoard()
+# result = board.is_square_empty(1, 1, 1)
+
+# print(result)
+# board.set_squares(1,1,1,"O")
+# board.set_squares(2,2,2,"O")
+# board.set_squares(3,3,3,"O")
+
+
+# board.displayBoard()
+# result = board.is_square_empty(1, 1, 1)
+# board.displayRow(1, 1)
+# print(result)
+
+
+# c=board.check_win()
+# print(f"ccc{c}")

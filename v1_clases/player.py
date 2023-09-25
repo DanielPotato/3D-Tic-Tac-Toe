@@ -9,11 +9,16 @@ class Player:
       
     def set_name(self, x):
         self.name = x
+    def get_x_o(self):
+        return self.name
+      
+    def set_x_o(self, x):
+        self.x_o = x
 
     def pick_number(self):
         while True:
             try:
-                number = int(input("Choose a number 1-3: "))
+                number = int(input(" enter a number 1-3: "))
                 if 1 <= number <= 3:
                     return number
                 else:
