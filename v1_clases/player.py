@@ -31,15 +31,3 @@ class Player:
 
  
 
-
-
-    def countdown_timer(self):
-        
-        for i in range(60, 0, -1):
-            sys.stdout.write(f"\rTime left for : {i} seconds")
-            sys.stdout.flush()
-            time.sleep(1)
-
-        print("\nTime's up!")
-
-
