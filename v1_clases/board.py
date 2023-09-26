@@ -1,4 +1,7 @@
-import os
+import os 
+
+
+
 
 class Board :
     def __init__(self,layer=3,row=3,col=3):
@@ -38,16 +41,16 @@ class Board :
         layer-=1
         #print(" 1 2 3")
         for r in range(self.row):
-            print(f"{r+1}",end="")
+            print(f"{r+1}) ",end="")
             for c in range(self.col):
                 if c != self.col -1 :
                     print(self.squares[layer][r][c]+"|",end="")
                 else:
                     print(self.squares[layer][r][c])
             if r != self.row - 1:
-                print("-"*8)
+                print("  "+"-"*7)
             else:
-                print("_"*8)   
+                print("  "+"_"*8)   
 
     def displayRow(self,layer,row):
         #os.system("clear")
@@ -134,22 +137,4 @@ class Board :
         return "C"
 
 
-# board = Board()
-
-# board.displayBoard()
-# result = board.is_square_empty(1, 1, 1)
-
-# print(result)
-# board.set_squares(1,1,1,"O")
-# board.set_squares(2,2,2,"O")
-# board.set_squares(3,3,3,"O")
-
-
-# board.displayBoard()
-# result = board.is_square_empty(1, 1, 1)
-# board.displayRow(1, 1)
-# print(result)
-
-
-# c=board.check_win()
-# print(f"ccc{c}")
+   
