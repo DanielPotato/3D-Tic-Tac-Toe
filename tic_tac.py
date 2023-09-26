@@ -32,7 +32,7 @@ class Row:
             return None
     def __str__(self):
         ret=""
-        for c in range(self.cells):
+        for c in range(3):
                     if c != len(self.cells)-1 :
                         ret+=(str(self.cells[c])+"|")
                     else:
@@ -58,9 +58,9 @@ class Layer(Row):
 
     def __str__(self):
         ret=""
-        for r in len(self.rows):
-            ret += str(self.rows[r])+"\n"
-            if r != self.row - 1:
+        for r in range(3):
+            ret += f"{str(self.rows[r])}\n"
+            if r != 2 :
                 ret+=("-"*6+"\n")
             else:
                 ret+=("_"*6+"\n")
@@ -83,6 +83,13 @@ class Board(Layer):
             return None
     def __str__(self):
         ret=""
-        for l in len(self.layers):
-            ret+=f"Layer :{l+1}\n{str(self.layers[l])}\n"
+        for l in range(3):
+            ret+=f"Layer :{l+1}\n______\n{str(self.layers[l])}\n"
         return ret    
+
+
+
+board=Board()
+print(str(board))
+print(str(board.layers[1]))  
+print(str(board.layers[1].rows[1]) )   
